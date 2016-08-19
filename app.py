@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
 from messengerbot import MessengerClient, messages, attachments, templates, elements
 
 # Manually initialize client
