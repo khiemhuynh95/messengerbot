@@ -60,3 +60,4 @@ def webook():
 	message = messages.Message(attachment=attachment)
 	request = messages.MessageRequest(recipient, message)
 	messenger.send(request)
+	return "ok", 200
