@@ -25,36 +25,38 @@ def verify():
 
     return "Hello world", 200
 
-# Manually initialize client
-messenger = MessengerClient(access_token='EAAOfYt7dcGsBALJFcp2ZBHyZAde6Tlfyt7Gr2GPfRzYm35yTH2ZAGqLZBqct7gzRFcSphQMNPMUSa4aPzYYnVGDwiVetRBjpY2wfbXvVbuvDXc81YK8BZCH0ZApvolfGsj7kkoY5eIkAHKgufFt46or5gNOI7Yn0kICNdKQbHSIQZDZD')
 
 # With env var export MESSENGER_PLATFORM_ACCESS_TOKEN=your_token
 from messengerbot import messenger
+@app.route('/', methods=['POST'])
+def webook():
+	# Manually initialize client
+	messenger = MessengerClient(access_token='EAAOfYt7dcGsBALJFcp2ZBHyZAde6Tlfyt7Gr2GPfRzYm35yTH2ZAGqLZBqct7gzRFcSphQMNPMUSa4aPzYYnVGDwiVetRBjpY2wfbXvVbuvDXc81YK8BZCH0ZApvolfGsj7kkoY5eIkAHKgufFt46or5gNOI7Yn0kICNdKQbHSIQZDZD')
 
-recipient = messages.Recipient(recipient_id='1140257512682784')
+	recipient = messages.Recipient(recipient_id='1140257512682784')
 
-# Send text message
-message = messages.Message(text='Hello World')
-request = messages.MessageRequest(recipient, message)
-messenger.send(request)
+	# Send text message
+	message = messages.Message(text='Hello World')
+	request = messages.MessageRequest(recipient, message)
+	messenger.send(request)
 
-# Send button template
-web_button = elements.WebUrlButton(
-   title='Show website',
-   url='https://petersapparel.parseapp.com'
-)
-postback_button = elements.PostbackButton(
-   title='Start chatting',
-   payload='USER_DEFINED_PAYLOAD'
-)
-template = templates.ButtonTemplate(
-   text='What do you want to do next?',
-   buttons=[
-       web_button, postback_button
-   ]
-)
-attachment = attachments.TemplateAttachment(template=template)
+	# Send button template
+	web_button = elements.WebUrlButton(
+	   title='Show website',
+	   url='https://petersapparel.parseapp.com'
+	)
+	postback_button = elements.PostbackButton(
+	   title='Start chatting',
+	   payload='USER_DEFINED_PAYLOAD'
+	)
+	template = templates.ButtonTemplate(
+	   text='What do you want to do next?',
+	   buttons=[
+	       web_button, postback_button
+	   ]
+	)
+	attachment = attachments.TemplateAttachment(template=template)
 
-message = messages.Message(attachment=attachment)
-request = messages.MessageRequest(recipient, message)
-messenger.send(request)
+	message = messages.Message(attachment=attachment)
+	request = messages.MessageRequest(recipient, message)
+	messenger.send(request)
