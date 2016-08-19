@@ -13,7 +13,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must
@@ -25,8 +24,6 @@ def verify():
 
     return "Hello world", 200
 
-
-
 # With env var export MESSENGER_PLATFORM_ACCESS_TOKEN=your_token
 from messengerbot import messenger
 @app.route('/', methods=['POST'])
@@ -37,7 +34,7 @@ def webook():
 	recipient = messages.Recipient(recipient_id='1140257512682784')
 
 	# Send text message
-	message = messages.Message(text='Hello World')
+	message = messages.Message(text='Hello World hahaha')
 	request = messages.MessageRequest(recipient, message)
 	messenger.send(request)
 
