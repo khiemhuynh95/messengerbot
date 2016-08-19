@@ -26,6 +26,7 @@ def verify():
     return "Hello world", 200
 
 
+
 # With env var export MESSENGER_PLATFORM_ACCESS_TOKEN=your_token
 from messengerbot import messenger
 @app.route('/', methods=['POST'])
