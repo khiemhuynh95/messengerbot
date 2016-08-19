@@ -219,6 +219,7 @@ def show_sug_buttons(recipient_id,sug_text):
         }
     })
     
+    
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
